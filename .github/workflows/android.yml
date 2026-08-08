@@ -47,17 +47,17 @@ jobs:
           restore-keys: |
             gradle-
 
-      - name: Check APK size
-        run: |
-          ls -lh dist
-          du -sh dist/*
-
       - name: Build Android APK
         run: |
           mkdir -p dist
           cd renpy-8.5.3-sdk
           ./renpy.sh launcher android_build "$GITHUB_WORKSPACE" \
             --destination "$GITHUB_WORKSPACE/dist"
+
+      - name: Check APK size
+        run: |
+          ls -lh dist
+          du -sh dist/*
 
       - name: Upload APK
         uses: actions/upload-artifact@v7

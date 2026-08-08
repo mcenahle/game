@@ -22,21 +22,12 @@ jobs:
           distribution: temurin
           java-version: "21"
 
-      - name: Cache Ren'Py Android SDK
-        id: cache-renpy
-        uses: actions/cache@v5
-        with:
-          path: renpy-8.5.3-sdk
-          key: renpy-android-8.5.3
-
       - name: Download Ren'Py
-        if: steps.cache-renpy.outputs.cache-hit != 'true'
         run: |
           wget https://www.renpy.org/dl/8.5.3/renpy-8.5.3-sdk.tar.bz2
           tar -xjf renpy-8.5.3-sdk.tar.bz2
 
       - name: Download RAPT
-        if: steps.cache-renpy.outputs.cache-hit != 'true'
         run: |
           wget https://www.renpy.org/dl/8.5.3/renpy-8.5.3-rapt.zip
           unzip renpy-8.5.3-rapt.zip -d renpy-8.5.3-sdk
@@ -55,6 +46,11 @@ jobs:
           key: gradle-${{ runner.os }}
           restore-keys: |
             gradle-
+
+      - name: Check APK size
+        run: |
+          ls -lh dist
+          du -sh dist/*
 
       - name: Build Android APK
         run: |

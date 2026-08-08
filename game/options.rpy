@@ -28,6 +28,13 @@ define config.version = "0.0.6"
 ## 行。
 
 define gui.about = _p("""
+这是一个由 Mcenahle 独立制作的视觉小说。
+
+本作品正在开发中。
+
+感谢 Ren'Py 引擎提供技术支持。感谢所有支持本项目的人。
+
+本游戏相关源代码：{a=https://github.com/mcenahle/game/}https://github.com/mcenahle/game/{/a}
 """)
 
 

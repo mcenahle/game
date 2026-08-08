@@ -4,6 +4,8 @@
 
 define e = Character("艾琳")
 
+define m = Character('我', color="#6262e5")
+
 
 # 游戏在此开始。
 
@@ -24,6 +26,12 @@ label start:
     e "您已创建一个新的 Ren'Py 游戏。"
 
     e "当您完善了故事、图片和音乐之后，您就可以向全世界发布了！"
+
+    show me happy
+
+    m "这是我第一次自己做一个独立游戏！！"
+
+    m "希望一切顺利吧。"
 
     # 此处为游戏结尾。
 

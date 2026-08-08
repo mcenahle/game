@@ -24,7 +24,7 @@ jobs:
           cd renpy-8.5.3-sdk
           ./renpy.sh launcher distribute "$GITHUB_WORKSPACE" \
           --destination "$GITHUB_WORKSPACE/build" \
-          --package windows
+          --package pc
 
       - name: Upload Windows build
         uses: actions/upload-artifact@v7

@@ -21,7 +21,7 @@ jobs:
 
       - name: Build Windows
         run: |
-          ./renpy-8.5.3-sdk/renpy.sh "$PWD" distribute --destination build
+          ./renpy-8.5.3-sdk/renpy.sh "$PWD" launcher distribute --destination build
 
       - name: Upload
         uses: actions/upload-artifact@v7

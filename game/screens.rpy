@@ -244,8 +244,8 @@ screen quick_menu():
             textbutton _("快进") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("自动") action Preference("auto-forward", "toggle")
             textbutton _("保存") action ShowMenu('save')
-            textbutton _("快存") action QuickSave()
-            textbutton _("快读") action QuickLoad()
+            # textbutton _("快存") action QuickSave()
+            # textbutton _("快读") action QuickLoad()
             textbutton _("设置") action ShowMenu('preferences')
 
 

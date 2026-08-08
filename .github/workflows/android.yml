@@ -40,8 +40,8 @@ jobs:
       - name: Build Android APK
         run: |
           mkdir -p dist
-          ./renpy-8.5.3-sdk/renpy.sh launcher android_build "$GITHUB_WORKSPACE" \
-            --destination "$GITHUB_WORKSPACE/dist"
+          ./renpy-8.5.3-sdk/renpy.sh "$GITHUB_WORKSPACE" launcher android_build \
+          --destination "$GITHUB_WORKSPACE/dist"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4

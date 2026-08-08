@@ -31,3 +31,8 @@ jobs:
         with:
           name: McenahleGame-Windows
           path: build/*
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v3
+        with:
+          files: build/*

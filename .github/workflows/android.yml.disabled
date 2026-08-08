@@ -1,0 +1,29 @@
+name: Build Android
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download RenPy
+        run: |
+          wget https://www.renpy.org/dl/8.5.3/renpy-8.5.3-sdk.tar.bz2
+          tar -xf renpy-8.5.3-sdk.tar.bz2
+
+      - name: Build APK
+        run: |
+          ./renpy-8.5.3-sdk/renpy.sh launcher android_build . --destination build
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: build/*

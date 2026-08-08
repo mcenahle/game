@@ -3,6 +3,8 @@ name: Build Android
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
     tags:
       - "v*"
 
@@ -56,6 +58,11 @@ jobs:
         run: |
           ls -lh dist
           du -sh dist/*
+
+      - name: Rename APK
+        run: |
+          VERSION=$(python -c "import json; print(json.load(open('android.json'))['version'])")
+          mv dist/*.apk dist/McenahleGame-${VERSION}-android.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v7

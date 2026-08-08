@@ -32,6 +32,11 @@ jobs:
           wget https://www.renpy.org/dl/8.5.3/renpy-8.5.3-rapt.zip
           unzip renpy-8.5.3-rapt.zip -d renpy-8.5.3-sdk
 
+      - name: Restore Android keys
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE }}" | base64 -d > android.keystore
+          echo "${{ secrets.BUNDLE_KEYSTORE }}" | base64 -d > bundle.keystore
+
       - name: Build Android APK
         run: |
           mkdir -p dist

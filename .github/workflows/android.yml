@@ -54,20 +54,25 @@ jobs:
           ./renpy.sh launcher android_build "$GITHUB_WORKSPACE" \
             --destination "$GITHUB_WORKSPACE/dist"
 
-      - name: Check APK size
+      - name: Get version
+        id: version
         run: |
-          ls -lh dist
-          du -sh dist/*
+          echo "version=$(python -c "import json; print(json.load(open('android.json'))['version'])")" >> $GITHUB_OUTPUT
 
       - name: Rename APK
         run: |
           VERSION=$(python -c "import json; print(json.load(open('android.json'))['version'])")
           mv dist/*.apk dist/McenahleGame-${VERSION}-android.apk
 
+      - name: Check APK size
+        run: |
+          ls -lh dist
+          du -sh dist/*
+
       - name: Upload APK
         uses: actions/upload-artifact@v7
         with:
-          name: android-apk
+          name: McenahleGame-${{ steps.version.outputs.version }}-android
           path: dist/*.apk
 
       - name: Publish Release

@@ -1,0 +1,51 @@
+name: Build Android
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Java
+        uses: actions/setup-java@v5.7.0
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Download Ren'Py
+        run: |
+          wget https://www.renpy.org/dl/8.5.3/renpy-8.5.3-sdk.tar.bz2
+          tar -xjf renpy-8.5.3-sdk.tar.bz2
+
+      - name: Download RAPT
+        run: |
+          wget https://www.renpy.org/dl/8.5.3/renpy-8.5.3-rapt.zip
+          unzip renpy-8.5.3-rapt.zip -d renpy-8.5.3-sdk
+
+      - name: Build Android APK
+        run: |
+          mkdir -p dist
+          ./renpy-8.5.3-sdk/renpy.sh launcher android_build "$GITHUB_WORKSPACE" \
+            --destination "$GITHUB_WORKSPACE/dist"
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: dist/*.apk
+
+      - name: Publish Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.apk

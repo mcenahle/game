@@ -21,7 +21,7 @@ define gui.show_name = True
 
 ## 游戏版本号。
 
-define config.version = "0.0.6"
+define config.version = "0.0.7"
 
 
 ## 放置在游戏内“关于”屏幕上的文本。将文本放在三个引号之间，并在段落之间留出空
@@ -33,6 +33,8 @@ define gui.about = _p("""
 本作品正在开发中。
 
 感谢 Ren'Py 引擎提供技术支持。感谢所有支持本项目的人。
+
+检查更新：{a=https://i.mcenahle.page/game/}https://i.mcenahle.page/game/{/a}
 
 本游戏相关源代码：{a=https://github.com/mcenahle/game/}https://github.com/mcenahle/game/{/a}
 """)

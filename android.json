@@ -8,7 +8,7 @@
   "include_sqlite": false,
   "layout": null,
   "name": "Mcenahle Game",
-  "numeric_version": 7,
+  "numeric_version": 8,
   "orientation": "sensor",
   "package": "page.mcenahle.game",
   "permissions": ["VIBRATE", "INTERNET"],
@@ -17,5 +17,5 @@
   "update_always": true,
   "update_icons": true,
   "update_keystores": true,
-  "version": "0.0.7"
+  "version": "0.1.0"
 }

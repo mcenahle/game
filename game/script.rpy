@@ -49,6 +49,26 @@ label start:
     show m worried
     m "怎么又来了，哎。"
 
+    menu: 
+        "你准备怎么办？"
+
+        "和他沟通":
+            jump talking
+
+        "离开宿舍清静一会儿":
+            jump leaving
+
+        "和抽油烟机决一死战":
+            jump fight_quick_ending
+
+    label fight_quick_ending:
+        
+        scene black
+        pause 1.0
+        "QUICK ENDING"
+        "你试图和抽油烟机决一死战并成功了。但处于精神健康政策，就不画图了。"
+        return
+
     # 此处为游戏结尾。
 
     return

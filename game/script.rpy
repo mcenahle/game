@@ -6,6 +6,8 @@ define m = Character("[player_name]", color="#6394f7")
 
 define h = Character('Helen', color="#c09eff")
 
+define s = Character('抽油烟机', color="#ff0000")
+
 
 # 游戏在此开始。
 
@@ -37,6 +39,15 @@ label start:
     m "至于说我自己，就是说我自己可能性格比较偏内向了，就很难与这些人相处......"
     show m happy
     m "算啦，既然到了图书馆门口了，还是继续进去敲代码吧。"
+    
+    scene bg dorm
+    show m happy
+    m "哎呀，图书馆待了几个小时，这个代码终于是搞明白啦！！！我真厉害。"
+    show s smoking
+    s "来来来，继续打游戏！！"
+
+    show m worried
+    m "怎么又来了，哎。"
 
     # 此处为游戏结尾。
 
